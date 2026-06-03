@@ -18,7 +18,7 @@ services:
     env: docker
     repo: https://github.com/edwinkaroki/ujima-loan-app.git
     branch: main
-    dockerfilePath: backend/Dockerfile
+    dockerfilePath: Dockerfile
     serviceDetails:
       envVars:
         - key: FRONTEND_ORIGIN
