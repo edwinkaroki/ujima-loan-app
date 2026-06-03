@@ -516,7 +516,9 @@
         ];
 
         let isProcessing = false;
-        const BACKEND_BASE_URL = window.BACKEND_BASE_URL || '/api';
+        // Render backend (FastAPI) endpoint base URL
+        const BACKEND_BASE_URL = window.BACKEND_BASE_URL || 'https://ujima-loan-app-3.onrender.com/api';
+
 
         // ============================================
         // CHART.JS INITIALIZATION
