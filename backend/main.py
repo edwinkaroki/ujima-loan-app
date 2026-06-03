@@ -15,8 +15,15 @@ def health():
 
 
 # Configure CORS
+# Needed for browser preflight (OPTIONS) when frontend is on a different domain (e.g., Vercel).
 _frontend = os.getenv("FRONTEND_ORIGIN", "*")
-if _frontend == "*":
+# If you deployed the frontend to Vercel, set FRONTEND_ORIGIN to:
+#   https://ujima-loan-app.vercel.app
+# (comma-separated if multiple)
+
+
+# If FRONTEND_ORIGIN is set to specific origins, use them; otherwise allow all.
+if _frontend.strip() == "*":
     origins = ["*"]
 else:
     origins = [o.strip() for o in _frontend.split(',') if o.strip()]
@@ -24,11 +31,13 @@ else:
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_credentials=True,
+    # For security and compatibility with common CORS rules, allow credentials only when not using wildcard.
+    allow_credentials=False if origins == ["*"] else True,
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["*"],
 )
+
 
 # Extra safety: ensure preflight OPTIONS requests are handled
 @app.options("/{rest_of_path:path}")
