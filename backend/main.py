@@ -60,7 +60,7 @@ def generate_scout_output(app: dict):
     income_type = get_income_type(app.get('occupation', ''))
     harvest_note = ''
     if 'Maize' in app.get('occupation', '') or 'Matooke' in app.get('occupation', '') or 'farmer' in app.get('occupation', '').lower():
-        harvest_note = f"Income aligns with {"/".join(peak)}. School fee pressure noted."
+        harvest_note = f"Income aligns with {'/'.join(peak)}. School fee pressure noted."
     else:
         harvest_note = f"Daily/irregular income pattern. Peak demand in {', '.join(peak)}."
 
