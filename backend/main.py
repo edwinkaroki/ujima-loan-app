@@ -27,7 +27,14 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
+
+# Extra safety: ensure preflight OPTIONS requests are handled
+@app.options("/{rest_of_path:path}")
+async def preflight_handler(rest_of_path: str):
+    return
+
 
 class GeminiRequest(BaseModel):
     agentType: str = None
