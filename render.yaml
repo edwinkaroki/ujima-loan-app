@@ -1,0 +1,27 @@
+# Render.yaml for two services: frontend (Static Site) and backend (Web Service using Docker)
+services:
+  - type: static
+    name: ujima-frontend
+    env: static
+    repo: https://github.com/edwinkaroki/ujima-loan-app.git
+    branch: main
+    rootDir: /
+    staticPublishPath: /
+    buildCommand: ''
+    serviceDetails:
+      envVars:
+        - key: NODE_ENV
+          value: production
+
+  - type: web
+    name: ujima-backend
+    env: docker
+    repo: https://github.com/edwinkaroki/ujima-loan-app.git
+    branch: main
+    dockerfilePath: backend/Dockerfile
+    serviceDetails:
+      envVars:
+        - key: FRONTEND_ORIGIN
+          value: https://your-domain.com
+        - key: GEMINI_API_KEY
+          fromSecret: GEMINI_API_KEY

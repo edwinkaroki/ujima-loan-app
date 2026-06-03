@@ -1,0 +1,39 @@
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# IDE & editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build outputs
+dist/
+build/
+*.log
+
+# Dependencies (if adding Node.js)
+node_modules/
+package-lock.json
+yarn.lock
+
+# API keys & credentials
+api_keys.txt
+secrets.json
+credentials.json
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# History & temporary files
+.history/
+*.tmp
+**/__pycache__/
+*.pyc
+
