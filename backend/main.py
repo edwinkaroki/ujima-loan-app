@@ -8,6 +8,12 @@ load_dotenv()
 
 app = FastAPI(title="Ujima Gemini Proxy")
 
+
+@app.get("/")
+def health():
+    return {"status": "ok"}
+
+
 # Configure CORS
 _frontend = os.getenv("FRONTEND_ORIGIN", "*")
 if _frontend == "*":
